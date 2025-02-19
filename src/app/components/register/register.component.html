@@ -1,0 +1,61 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lilita+One&display=swap" rel="stylesheet">
+
+<body>
+  <div class="register-modal">
+    <img src="C:\Users\joelo\OneDrive\Escritorio\Escritorio\Proyectos\proyHotel\FrontEnd-Hotel\src\assets\imagen\eden-hotel-logo.png" class="logo" alt="Logo" (click)="home()" />
+    <div class="register-container">
+      <h3 class="lexend-uniquifier">Crear usuario</h3>
+      <form (ngSubmit)="submitRegister()">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" [(ngModel)]="apellido" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="fechaNacimiento" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="documento">D.N.I</label>
+          <input type="text" id="documento" name="documento" [(ngModel)]="documento" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" [(ngModel)]="correo" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" [(ngModel)]="telefono" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Repetir contraseña</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required />
+        </div>
+
+        <div class="button-container">
+          <button type="button" (click)="closeRegister()">Cancelar</button>
+          <button type="submit">Aceptar</button> <!-- Este botón llama a submitRegister() -->
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

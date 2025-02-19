@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Editar Perfil</h2>
+
+  <form (ngSubmit)="guardarDatos()" *ngIf="usuario">
+    <!--DNI-->
+    <label for="dni">DNI:</label>
+    <input type="number" id="dni" [(ngModel)]="usuario.dni" name="dni" required>
+
+    <!-- Nombre -->
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+
+    <!-- Apellido -->
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" [(ngModel)]="usuario.apellido" name="apellido" required>
+
+    <!-- Email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="usuario.email" name="email" required>
+
+    <!-- Teléfono -->
+    <label for="telefono">Teléfono:</label>
+    <input type="number" id="telefono" [(ngModel)]="usuario.telefono" name="telefono" required>
+
+    <!-- Fecha de Nacimiento -->
+    <label for="fecha">Fecha de Nacimiento:</label>
+    <input type="date" id="fecha" [(ngModel)]="usuario.fecha_nacimiento" name="fecha" required>
+
+    <!-- Rol (Solo lectura) -->
+    <label for="rol">Rol:</label>
+    <input type="text" id="rol" [(ngModel)]="usuario.rol" name="rol" disabled>
+
+    <!-- Contraseña -->
+    <label for="password">Nueva Contraseña:</label>
+    <input type="password" id="password" [(ngModel)]="usuario.password" name="password">
+
+    <!-- Botones -->
+    <div class="buttons">
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+
+  <p *ngIf="!usuario">Cargando datos del usuario...</p>
+</div>

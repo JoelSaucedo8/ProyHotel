@@ -1,0 +1,60 @@
+main {
+    padding: 20px;
+    background-color: #f9f9f9;
+    padding-top: 60px; /* Ajustar según la altura del header */
+    padding-bottom: 40px; /* Ajustar según la altura del footer */
+}
+
+#services {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#services h2 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+#services p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+#services ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#services li {
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 5px;
+}
+
+.image {
+    width: 100px;
+    height: auto;
+}
+
+/* CSS */
+.container {
+    display: flex;
+}
+
+.columna {
+    flex: 1; /* Ambas columnas ocuparán el mismo espacio */
+    padding: 10px; /* Espaciado interno */
+}
+
+.izquierda {
+    background-color: #f0f0f0; /* Color de fondo para la columna izquierda */
+}
+
+.derecha {
+    background-color: #d0d0d0; /* Color de fondo para la columna derecha */
+}

@@ -1,0 +1,49 @@
+<div class="operador-container">
+    <h2>Panel Operador</h2>
+    
+    <!-- Check-in -->
+    <div class="section">
+      <h3>Check-in</h3>
+      <input type="text" [(ngModel)]="dniCheckin" placeholder="Ingrese DNI del huésped">
+      <button (click)="buscarCheckin()">Buscar</button>
+      <div *ngIf="habitacionCheckin">
+        <p>Habitación asignada: {{ habitacionCheckin }}</p>
+        <button (click)="realizarCheckin(habitacionCheckin)">Check-in</button>
+      </div>
+    </div>
+    
+    <!-- Check-out -->
+    <div class="section">
+      <h3>Check-out</h3>
+      <input type="text" [(ngModel)]="dniCheckout" placeholder="Ingrese DNI o Nro. de Habitación">
+      <button (click)="buscarCheckout()">Buscar</button>
+      <div *ngIf="habitacionCheckout">
+        <p>Habitación ocupada: {{ habitacionCheckout }}</p>
+        <button (click)="realizarCheckout(habitacionCheckout)">Check-out</button>
+      </div>
+    </div>
+    
+    <!-- Reservar Habitación -->
+    <div class="section">
+      <h3>Reservar Habitación</h3>
+      <input type="text" [(ngModel)]="dniReserva" placeholder="Ingrese DNI del huésped">
+      <button (click)="buscarHuesped()">Buscar</button>
+      <div *ngIf="!huespedEncontrado">
+        <button (click)="registrarHuesped()">Registrar Nuevo Huésped</button>
+      </div>
+      <div *ngIf="huespedEncontrado">
+        <button (click)="reservarHabitacion()">Reservar</button>
+      </div>
+    </div>
+    
+    <!-- Modificar datos de usuario -->
+    <div class="section">
+      <h3>Modificar Datos de Usuario</h3>
+      <input type="text" [(ngModel)]="dniUsuario" placeholder="Ingrese DNI o Nombre/Apellido">
+      <button (click)="buscarUsuario()">Buscar</button>
+      <div *ngIf="usuarioEncontrado">
+        <button (click)="editarUsuario()">Editar Datos</button>
+      </div>
+    </div>
+  </div>
+  

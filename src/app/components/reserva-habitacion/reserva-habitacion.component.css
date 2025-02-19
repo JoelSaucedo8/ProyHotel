@@ -1,0 +1,132 @@
+/* Estilos generales */
+div {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Estilos para el formulario de búsqueda */
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para las habitaciones disponibles */
+div *ngIf {
+  margin-top: 20px;
+}
+
+div *ngIf h2 {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+div *ngIf p {
+  margin: 5px 0;
+}
+
+div *ngIf button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+div *ngIf button:hover {
+  background-color: #218838;
+}
+
+/* Estilos para el formulario de reserva */
+.mat-form-field {
+  width: 100%;
+  margin-top: 10px;
+}
+
+button[type="button"] {
+  display: inline-block;
+  width: 48%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #c82333;
+}
+
+button[type="submit"] {
+  display: inline-block;
+  width: 48%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 4%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para la información por huésped */
+.huesped-info {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.huesped-info h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #333;
+}

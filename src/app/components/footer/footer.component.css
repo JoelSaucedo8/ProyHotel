@@ -1,0 +1,34 @@
+footer {
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 20px;
+    text-align: center; /* Centrar el texto */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer p {
+    margin: 5px 0; /* Espaciado entre párrafos */
+}
+
+footer .redes-sociales {
+    margin-top: 10px; /* Separación de las redes sociales */
+}
+
+footer .redes-sociales a {
+    color: #1e90ff; /* Color de los enlaces (azul brillante) */
+    text-decoration: none; /* Sin subrayado */
+    margin: 0 10px; /* Espaciado horizontal entre enlaces */
+    font-weight: bold; /* Texto en negrita */
+}
+
+footer .redes-sociales a:hover {
+    color: #ffcc00; /* Color al pasar el mouse (amarillo) */
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+@media (max-width: 600px) {
+    footer {
+        font-size: 12px; /* Texto más pequeño para pantallas pequeñas */
+    }
+}

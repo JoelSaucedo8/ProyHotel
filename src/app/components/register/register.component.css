@@ -1,0 +1,92 @@
+/* General styles */
+body {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .register-modal {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .logo {
+    max-width: 150px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+  }
+  
+  .register-container h3 {
+    font-family: 'Lilita One', cursive;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-container button:first-child {
+    background-color: #ff4d4d;
+  }
+  
+  .button-container button:first-child:hover {
+    background-color: #e43d3d;
+  }
+  
+  .button-container button:last-child {
+    background-color: #007bff;
+  }
+  
+  .button-container button:last-child:hover {
+    background-color: #0056b3;
+  }
+  

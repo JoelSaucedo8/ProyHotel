@@ -1,0 +1,15 @@
+<div class="login-container">
+  <div class="login-content">
+    <h1 id="login-title">Login</h1>
+    <div class="login-box">
+      <p id="title-usuario">Usuario</p>
+      <input class="custom-input" type="text" placeholder="Ingrese Usuario" [(ngModel)]="documento">
+      <p id="title-contrasenia">Contraseña</p>
+      <input class="custom-input" type="password" placeholder="Ingrese Contraseña" [(ngModel)]="password">
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="cerrar()" id="cancelar">Cancelar</button>
+      <button mat-button (click)="iniciar()" id="aceptar">Aceptar</button>
+    </div>
+  </div>
+</div>

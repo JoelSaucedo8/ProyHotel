@@ -1,0 +1,115 @@
+<!-- Formulario de búsqueda de disponibilidad -->
+<div *ngIf="!mostrarReserva">
+  <h2>Buscar Disponibilidad de Habitaciones</h2>
+  <form [formGroup]="busquedaForm" (ngSubmit)="buscarDisponibilidad()">
+    <!-- Fecha de Entrada -->
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Entrada</mat-label>
+      <input matInput type="date" formControlName="fechaEntrada">
+    </mat-form-field>
+
+    <!-- Fecha de Salida -->
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Salida</mat-label>
+      <input matInput type="date" formControlName="fechaSalida">
+    </mat-form-field>
+
+    <!-- Cantidad de Personas -->
+    <mat-form-field appearance="fill">
+      <mat-label>Cantidad de Personas</mat-label>
+      <input matInput type="number" formControlName="personas" min="1" max="3">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Buscar Disponibilidad</button>
+  </form>
+
+  <!-- Mostrar habitaciones disponibles -->
+  <div *ngIf="habitacionesDisponibles.length > 0">
+    <h3>Habitaciones Disponibles</h3>
+    <div *ngFor="let habitacion of habitacionesDisponibles" class="habitacion">
+      <p><strong>Número:</strong> {{ habitacion.numero }}</p>
+      <p><strong>Capacidad:</strong> 
+        <span *ngIf="habitacion.cantidad_camas_simples === 2 || habitacion.cantidad_camas_dobles === 1">Para 2 personas</span>
+        <span *ngIf="habitacion.cantidad_camas_simples === 3 || (habitacion.cantidad_camas_dobles === 1 && habitacion.cantidad_camas_simples === 1)">Para 3 personas</span>
+      </p>
+      <p><strong>Precio:</strong> {{ habitacion.precio }}</p>
+      <button mat-raised-button color="accent" (click)="seleccionarHabitacion(habitacion)">Reservar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Formulario de reserva -->
+<div *ngIf="mostrarReserva">
+  <h2>Reservar Habitación</h2>
+  <form [formGroup]="reservaForm" (ngSubmit)="reserva()">
+    <!-- Fecha de inicio -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fecha_inicio">
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+    </mat-form-field>
+  
+    <!-- Fecha de fin -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Fecha de fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fecha_fin">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field>
+  
+    <!-- Tipo de Habitación -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Tipo de Habitación</mat-label>
+      <mat-select formControlName="tipoHabitacion" name="tipoHabitacion">
+        <mat-option value="" disabled>Seleccione un tipo</mat-option>
+        <mat-option *ngFor="let tipo of tiposHabitacion" [value]="tipo.value">
+          {{ tipo.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- Tipos de Cama -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Tipo de Cama</mat-label>
+      <mat-select formControlName="tipoCama" name="tipoCama">
+        <mat-option value="" disabled>Seleccione un tipo</mat-option>
+        <mat-option *ngFor="let cama of tiposCama" [value]="cama.value">
+          {{ cama.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- Cantidad de Huéspedes -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Cantidad de Huéspedes</mat-label>
+      <input matInput type="number" formControlName="cantidadHuespedes" name="cantidadHuespedes">
+    </mat-form-field>
+  
+    <!-- Información por huésped -->
+    <div formArrayName="huespedes">
+      <div *ngFor="let huesped of huespedes.controls; let i = index" [formGroupName]="i" class="huesped-info">
+        <h3>Huésped {{ i + 1 }}</h3>
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" name="nombre{{i}}">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" name="apellido{{i}}">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>DNI</mat-label>
+          <input matInput type="text" formControlName="dni" name="dni{{i}}">
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <!-- Botones -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="reservaForm.invalid">
+      Aceptar
+    </button>
+  
+    <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+  </form>
+</div>

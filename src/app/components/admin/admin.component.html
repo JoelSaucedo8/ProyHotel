@@ -1,0 +1,36 @@
+<div>
+  <h2>Crear Habitación</h2>
+  <form>
+    <!-- Tipo de habitación -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Tipo de habitación</mat-label>
+      <mat-select id="tipoHabitacion" [(value)]="tipoHabitacion">
+        <mat-option value="" disabled>Seleccione un tipo</mat-option>
+        <mat-option value="dosPersonas">Dos Personas</mat-option>
+        <mat-option value="tresPersonas">Tres Personas</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Tipo de cama -->
+    <mat-form-field appearance="fill" class="form-field" *ngIf="tipoHabitacion">
+      <mat-label>Tipo de cama</mat-label>
+      <mat-select id="tipoCama" [(value)]="tipoCama">
+        <mat-option value="" disabled>Seleccione un tipo</mat-option>
+        <mat-option *ngFor="let opcion of opcionesCamasDisponibles" [value]="opcion.value">
+          {{ opcion.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Número de habitación -->
+    <mat-form-field appearance="fill" class="form-field" *ngIf="tipoHabitacion && tipoCama">
+      <mat-label>Número de habitación</mat-label>
+      <input matInput id="numeroHabitacion" type="number" name="numeroHabitacion" [(ngModel)]="numeroHabitacion" placeholder="Ingrese el número de habitación" />
+    </mat-form-field>
+
+    <!-- Botón para guardar -->
+    <button mat-raised-button color="primary" type="submit" (click)="guardarHabitacion()" [disabled]="!tipoHabitacion || !tipoCama || !numeroHabitacion">
+      Guardar
+    </button>
+  </form>
+</div>

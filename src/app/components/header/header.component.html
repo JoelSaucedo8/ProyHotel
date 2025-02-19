@@ -1,0 +1,16 @@
+<header>
+  <div class="header-content">
+    <span *ngIf="isLoggedIn$ | async" class="user-info" (mouseenter)="showUserInfo()" (mouseleave)="hideUserInfo()">
+      Bienvenido, {{ userName }} ({{ userType }})
+      <div class="tooltip" *ngIf="showTooltip">
+        <button (click)="logout()">Cerrar Sesión</button>
+      </div>
+      <button *ngIf="userType === 'huesped'" mat-raised-button color="primary" (click)="openModifyProfile()">
+        Editar Perfil
+      </button>
+    </span>
+
+    <button *ngIf="!(isLoggedIn$ | async)" (click)="abrirLogin()">Iniciar Sesión</button>
+    <button *ngIf="!(isLoggedIn$ | async)" (click)="openRegister()">Registrarse</button>
+  </div>
+</header>
