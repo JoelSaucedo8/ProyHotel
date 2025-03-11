@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditarperfilComponent } from './components/editarperfil/editarperfil.component';
+import { AgregarHuespedComponent } from './components/agregar-huesped/agregar-huesped.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { EditarperfilComponent } from './components/editarperfil/editarperfil.co
     AdminComponent,
     OperadorComponent,
     ReservaHabitacionComponent,
-    EditarperfilComponent
+    EditarperfilComponent,
+    AgregarHuespedComponent
   ],
   imports: [
     BrowserModule,

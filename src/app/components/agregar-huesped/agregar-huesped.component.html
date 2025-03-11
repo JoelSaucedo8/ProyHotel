@@ -1,0 +1,39 @@
+<h3>Agregar Huéspedes</h3>
+<form [formGroup]="huespedForm" (ngSubmit)="agregarHuesped()">
+  <div formArrayName="huespedes">
+    <div *ngFor="let huesped of huespedes.controls; let i = index" [formGroupName]="i" class="huesped-info">
+      <h4>Huésped {{ i + 1 }}</h4>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ingresa el nombre" required>
+        <mat-error *ngIf="huesped.get('nombre')?.invalid && huesped.get('nombre')?.touched">
+          El nombre es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" placeholder="Ingresa el apellido" required>
+        <mat-error *ngIf="huesped.get('apellido')?.invalid && huesped.get('apellido')?.touched">
+          El apellido es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni" placeholder="Ingresa el DNI" required>
+        <mat-error *ngIf="huesped.get('dni')?.invalid && huesped.get('dni')?.touched">
+          El DNI es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-button color="warn" type="button" (click)="confirmarEliminar(i)">Eliminar</button>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" type="button" (click)="agregarHuesped()">Agregar Huésped</button>
+  <button mat-raised-button color="accent" type="button" (click)="enviarHuespedes()" [disabled]="huespedForm.invalid">
+    Confirmar Huéspedes
+  </button>
+</form>

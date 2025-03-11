@@ -6,10 +6,14 @@
       <h3>Check-in</h3>
       <input type="text" [(ngModel)]="dniCheckin" placeholder="Ingrese DNI del huésped">
       <button (click)="buscarCheckin()">Buscar</button>
-      <div *ngIf="habitacionCheckin">
-        <p>Habitación asignada: {{ habitacionCheckin }}</p>
-        <button (click)="realizarCheckin(habitacionCheckin)">Check-in</button>
-      </div>
+        <div *ngIf="habitacionCheckin">
+          <h2>Habitación N° {{ habitacionCheckin.numero }}</h2>
+          <p><strong>Tipo:</strong> {{ habitacionCheckin.tipo }}</p>
+          <p><strong>Camas simples:</strong> {{ habitacionCheckin.cantidad_camas_simples }}</p>
+          <p><strong>Camas dobles:</strong> {{ habitacionCheckin.cantidad_camas_dobles }}</p>
+          <p><strong>Estado:</strong> {{ habitacionCheckin.estado }}</p>
+          <button (click)="realizarCheckin(habitacionCheckin)">Check-in</button>
+        </div>
     </div>
     
     <!-- Check-out -->
@@ -25,25 +29,47 @@
     
     <!-- Reservar Habitación -->
     <div class="section">
-      <h3>Reservar Habitación</h3>
-      <input type="text" [(ngModel)]="dniReserva" placeholder="Ingrese DNI del huésped">
-      <button (click)="buscarHuesped()">Buscar</button>
-      <div *ngIf="!huespedEncontrado">
-        <button (click)="registrarHuesped()">Registrar Nuevo Huésped</button>
-      </div>
-      <div *ngIf="huespedEncontrado">
-        <button (click)="reservarHabitacion()">Reservar</button>
-      </div>
+      <h3>Alta Huesped</h3>
+      <button (click)="altaHuesped()">Alta Huesped</button>
     </div>
     
     <!-- Modificar datos de usuario -->
     <div class="section">
       <h3>Modificar Datos de Usuario</h3>
-      <input type="text" [(ngModel)]="dniUsuario" placeholder="Ingrese DNI o Nombre/Apellido">
-      <button (click)="buscarUsuario()">Buscar</button>
-      <div *ngIf="usuarioEncontrado">
-        <button (click)="editarUsuario()">Editar Datos</button>
-      </div>
+      <input type="text" [(ngModel)]="criterioBusqueda" placeholder="Buscar por DNI, nombre o apellido">
+      <button (click)="buscar()">Buscar</button>
+      <p *ngIf="idUsuarioSeleccionado">Usuario seleccionado con ID: {{ idUsuarioSeleccionado }}</p>
+      <button *ngIf="idUsuarioSeleccionado" (click)="actualizarUsuario()">Actualizar Usuario</button>
+    </div>
+
+    <div *ngIf="idUsuarioSeleccionado">
+      <h3>Actualizar Usuario</h3>
+      <form [formGroup]="modificarUsuarioForm">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" formControlName="dni" />
+  
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" />
+  
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" formControlName="apellido" />
+  
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" />
+  
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" />
+  
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" formControlName="telefono" />
+  
+        <label for="rol">Rol:</label>
+        <input type="text" id="rol" formControlName="rol" />
+  
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" />
+  
+        <button type="button" (click)="actualizarUsuario()">Actualizar Usuario</button>
+      </form>
     </div>
   </div>
-  

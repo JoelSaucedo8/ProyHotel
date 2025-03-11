@@ -1,0 +1,121 @@
+/* Contenedor principal del pop-up */
+.login-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Para que quede por encima del resto */
+  }
+  
+  /* Caja de contenido del login */
+  .login-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%; /* Para que se adapte en pantallas pequeñas */
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Título del login */
+  #login-title {
+    font-size: 24px;
+    color: #007BFF;
+    margin-bottom: 20px;
+  }
+  
+  /* Caja de los inputs */
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Etiquetas de usuario y contraseña */
+  #title-usuario, #title-contrasenia {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    margin: 5px 0;
+  }
+  
+  /* Campos de entrada */
+  .custom-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .custom-input:focus {
+    border-color: #007BFF;
+  }
+  
+  /* Botones */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.1s ease;
+  }
+  
+  #cancelar {
+    background: #dc3545;
+    color: #fff;
+  }
+  
+  #cancelar:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+  }
+  
+  #aceptar {
+    background: #28a745;
+    color: #fff;
+  }
+  
+  #aceptar:hover {
+    background: #218838;
+    transform: translateY(-2px);
+  }
+  
+  /* Animación de aparición */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsivo para pantallas más pequeñas */
+  @media (max-width: 600px) {
+    .login-content {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    #login-title {
+      font-size: 20px;
+    }
+    
+    button {
+      font-size: 14px;
+      padding: 8px 15px;
+    }
+  }
+  

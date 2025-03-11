@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PermisosService } from 'src/app/services/permisos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-header',
@@ -46,8 +47,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  openRegister() {
-    this.router.navigate(['/register']); // Redirige a la página de registro
+  abrirRegistro(): void {
+    this.dialog.open(RegisterComponent, {
+      width: '500px',   // Ancho fijo
+      maxWidth: '90vw', // Máximo ancho (para que no se haga gigante en pantallas grandes)
+      height: '90vh',   // Altura automática según el contenido
+      maxHeight: '90vh',
+      disableClose: true // Para que no se cierre clickeando fuera
+    });
   }
 
   openModifyProfile() {

@@ -13,11 +13,12 @@ export class HuespedService {
   // Post para agregar un huésped
   agregarHuespedes(huesped: any): Observable<any> {
     console.log('Body de la solicitud POST:', huesped);
-    return this.http.post<any>(`${this.apiUrl}agregarHuespedes`, huesped).pipe(
+    return this.http.post<any>(`${this.apiUrl}agregarHuesped`, huesped).pipe(
       map(response => {
         if (response && response.codigo === 200) {
           console.log('Huesped agregado con éxito:', response);
           localStorage.setItem('token', response.token);
+          localStorage.setItem('id_huesped', response.id_huesped)
         }
         return response;
       }),

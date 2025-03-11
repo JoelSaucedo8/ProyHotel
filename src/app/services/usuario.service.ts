@@ -27,7 +27,22 @@ export class UsuarioService {
 
   // Obtener todos los usuarios
   obtenerUsuarios(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'obtenerUsuarios');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`,
+      'Accept': 'application/json'
+    });
+
+    return this.http.get<any>(`${this.apiUrl}obtenerUsuarios`, { headers }).pipe(
+      map(response => {
+        console.log('Respuesta del servicio:', response);
+        return response;
+      }),
+      catchError(error => {
+        console.error('Error en la solicitud de usuarios:', error);
+        return of(null);
+      })
+    );
   }
 
   obtenerUsuarioId(): Observable<any> {

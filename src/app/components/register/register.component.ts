@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { PermisosService } from 'src/app/services/permisos.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog'; // Importar MatDialogRef
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,6 @@ import { of } from 'rxjs';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  isRegisterOpen: boolean = false;
   nombre: string = '';
   apellido: string = '';
   fechaNacimiento: string = '';
@@ -19,20 +19,17 @@ export class RegisterComponent {
   telefono: string = '';
   password: string = '';
   confirmPassword: string = '';
-navigateToHome: any;
 
-  constructor(private router: Router, private permisos: PermisosService) {} 
-
-  openRegister(): void {
-    this.isRegisterOpen = true;
-  }
+  constructor(
+    private router: Router,
+    private permisos: PermisosService,
+    public dialogRef: MatDialogRef<RegisterComponent> // Para cerrar el diálogo
+  ) {}
 
   closeRegister(): void {
-    this.isRegisterOpen = false;
-    this.router.navigate(['/']);
+    this.dialogRef.close(); // Cierra el pop-up
   }
 
-  // Valida campo y simula el envío de formulario 
   submitRegister(): void {
     if (!this.nombre || !this.apellido || !this.fechaNacimiento || !this.documento || !this.correo || !this.telefono || !this.password || !this.confirmPassword) {
       alert("Por favor, complete todos los campos.");
@@ -44,14 +41,13 @@ navigateToHome: any;
       return;
     }
 
-    // Crear el objeto userData con los campos correctos
     const userData = {
-      dni: this.documento, 
+      dni: this.documento,
       apellido: this.apellido,
       nombre: this.nombre,
-      fecha_nacimiento: this.fechaNacimiento, 
+      fecha_nacimiento: this.fechaNacimiento,
       password: this.password,
-      rol: 'huesped', 
+      rol: 'huesped',
       email: this.correo,
       telefono: this.telefono
     };
@@ -66,13 +62,8 @@ navigateToHome: any;
       if (response) {
         console.log("Formulario de registro enviado");
         alert("Registro exitoso");
-        this.closeRegister(); 
+        this.dialogRef.close(); // Cierra el pop-up después del éxito
       }
     });
-  }
-
-  // Vuelve a la página de inicio
-  home(): void {
-    this.router.navigate(['/']);
   }
 }

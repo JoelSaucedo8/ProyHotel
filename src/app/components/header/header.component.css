@@ -1,81 +1,89 @@
 /* Estilo general del header */
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #007BFF; /* Color azul del fondo */
-    color: white;
-    padding: 10px 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Contenido del header */
+  display: flex;
+  justify-content: flex-end; /* Empujar todo a la derecha */
+  align-items: center;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor del contenido del header */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinear elementos a la derecha */
+  gap: 10px; /* Espaciado entre elementos */
+}
+
+
+/* Información del usuario */
+.user-info {
+  position: relative;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado interno */
+}
+
+/* Tooltip para cerrar sesión */
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Mostrar tooltip al hacer hover */
+.user-info:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Botones de sesión */
+button {
+  background-color: white;
+  color: #007BFF;
+  border: 1px solid #007BFF;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Botón de editar perfil */
+button[mat-raised-button][color="primary"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #218838;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
   .header-content {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Título principal */
-  .header-content h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  /* Contenedor de elementos en el lado derecho */
-  .header-right {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
   }
-  
-  /* Botones en el header */
-  .header-right button {
-    background-color: white;
-    color: #007BFF;
-    border: 1px solid #007BFF;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-  }
-  
-  .header-right button:hover {
-    background-color: #0056b3;
-    color: white;
-  }
-  
-  /* Nombre del usuario logueado */
-  .header-right span {
-    margin: 0 10px;
-    font-weight: bold;
-  }
-  
-  /* Ícono de información */
-  .header-right i {
-    font-style: normal; /* Para evitar cursiva en el icono */
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    margin-left: 5px;
-  }
-  
-  /* Tooltip para el tipo de usuario */
-  .tooltip {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-  }
-  .user-info {
-    cursor: pointer;
-    position: relative;
-  }
-  
-  
+}

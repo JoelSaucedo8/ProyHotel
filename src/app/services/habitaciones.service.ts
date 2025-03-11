@@ -24,13 +24,17 @@ export class HabitacionesService {
     console.log('Token en localStorage:', token); // 👈 Verificar en la consola
   
     const headers = new HttpHeaders({
-      'Authorization': `${token}`,  // Asegúrate de que el token tiene el prefijo "Bearer"
+      'Authorization': `${token}`,
       'Accept': 'application/json'
     });
   
     return this.http.get<any>(`${this.apiUrl}obtenerHabitaciones`, { headers }).pipe(
       map(response => {
         if (response && response.codigo === 200) {
+          localStorage.setItem('tipo', response.payload[0].tipo);
+          localStorage.setItem('cant_camas_simples', response.payload[0].cantidad_camas_simples);
+          localStorage.setItem('cant_camas_dobles', response.payload[0].cantidad_camas_dobles);
+          localStorage.setItem('numero', response.payload[0].numero);
           console.log('Habitaciones obtenidas con éxito:', response);
           return response.payload;
         }
@@ -49,7 +53,7 @@ export class HabitacionesService {
     console.log('Token en localStorage:', token); // 👈 Verificar en la consola
   
     const headers = new HttpHeaders({
-      'Authorization': `${token}`,  // Asegúrate de que el token tiene el prefijo "Bearer"
+      'Authorization': `${token}`,
       'Accept': 'application/json'
     });
     return this.http.get<any>(`${this.apiUrl}obtenerHabitacion/${id}`, {headers}).pipe(
@@ -87,8 +91,14 @@ export class HabitacionesService {
     );
   }
 
-  actualizarHabitacion(habitacion: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}actualizarHabitacion`, habitacion).pipe(
+  actualizarHabitacion(id: number, habitacion: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`,
+      'Accept': 'application/json'
+    });
+
+    return this.http.put<any>(`${this.apiUrl}actualizarHabitacion/${id}`, habitacion, {headers}).pipe(
       map(response => {
         if (response && response.codigo === 200) {
           console.log('Habitación actualizada con éxito:', response);

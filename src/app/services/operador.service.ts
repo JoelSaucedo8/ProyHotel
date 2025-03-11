@@ -10,9 +10,36 @@ export class OperadorService {
 
   constructor(private http: HttpClient) { }
 
-  buscarHabitacionPorDNI(dni: any): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}`, dni).pipe(
+  obtenerReservas(): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`,
+      'Accept': 'application/json'
+    });
+
+    return this.http.get<any>(`${this.apiUrl}obtenerReservas`, {headers}).pipe(
       map(reponse => {
+        localStorage.setItem('id_reserva', reponse.payload[0].id_reserva);
+        console.log('Respuesta del servicio:', reponse);
+        return reponse;
+      }),
+      catchError(error => {
+        console.error('Error en la solicitud de reserva:', error);
+        return of(null);
+      })
+    );
+  }
+
+  obtenerHuespedReserva(id: any): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `${token}`,
+      'Accept': 'application/json'
+    });
+
+    return this.http.get<any>(`${this.apiUrl}obtenerHuespedReserva/${id}`, {headers}).pipe(
+      map(reponse => {
+        console.log('Respuesta del servicio:', reponse);
         return reponse;
       }),
       catchError(error => {
@@ -40,19 +67,7 @@ export class OperadorService {
       })
     );
   }
-
-  buscarHabitacionPorDNIoNumero(dni: any, habitacion: any): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}`, dni && habitacion).pipe(
-      map(reponse => {
-        return reponse;
-      }),
-      catchError(error => {
-        console.error('Error en la solicitud de habitacion:', error);
-        return of(null);
-      })
-    );
-  }
-
+  
   checkoutHabitacion(habitacionId: any): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}`, habitacionId).pipe(
       map(reponse => {
@@ -76,21 +91,9 @@ export class OperadorService {
       })
     );
   }
-
-  buscarUsuario(dni: any): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}`, dni).pipe(
-      map(reponse => {
-        return reponse;
-      }),
-      catchError(error => {
-        console.error('Error en la solicitud de habitacion:', error);
-        return of(null);
-      })
-    );
-  }
-
-  actualizarUsuario(datos: any): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}`, datos).pipe(
+  
+  actualizarUsuario(id: any, datos: any): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}actualizarUsuario/${id}`, datos).pipe(
       map(reponse => {
         return reponse;
       }),

@@ -1,6 +1,7 @@
 export interface Huesped {
+    id_huesped?: number;
     nombre: string;
     apellido: string;
-    dni: string;
-    id_reserva_huesped: number;
+    dni: number;
+    id_reserva?: number;
 }

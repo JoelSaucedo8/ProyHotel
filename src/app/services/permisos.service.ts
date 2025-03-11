@@ -34,6 +34,7 @@ export class PermisosService {
           this.isLoggedInSubject.next(true);
           localStorage.setItem('nombre', response.payload[0].nombre);
           localStorage.setItem('token', response.jwt);
+          console.log(response.jwt)
           localStorage.setItem('id', response.payload[0].id_usuario);
           localStorage.setItem('rol', response.payload[0].rol);
           localStorage.setItem('usuario', JSON.stringify(response.payload[0]));
@@ -71,9 +72,10 @@ export class PermisosService {
     this.isLoggedInSubject.next(false);
     localStorage.removeItem('nombre');
     localStorage.removeItem('token');
-    localStorage.removeItem('id_usuario');
+    localStorage.removeItem('id');
     localStorage.removeItem('rol');
     localStorage.removeItem('usuario')
+    localStorage.removeItem('id_reserva');
     this.router.navigate(['/']);
   }
 

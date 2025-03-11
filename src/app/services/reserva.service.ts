@@ -26,7 +26,26 @@ export class ReservaService {
         if (response && response.codigo === 200) {
           console.log('Reserva creada con éxito:', response);
           this.isLoggedInSubject.next(true); // Indica que el usuario está logueado
-          localStorage.setItem('token', response.token); // Almacena el token
+          localStorage.setItem('id_reserva', response.payload[0]?.id_reserva);
+          console.log('id reserva en service:' + localStorage.getItem('id_reserva'))
+        }
+        return response;
+      }),
+      catchError(err => {
+        console.error('Error en la creacion de reserva:', err);
+        return of(null);
+      })
+    );
+  }
+
+  crearReservaHuesped(reservaHuesped: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}crearReservaHuesped`, reservaHuesped).pipe(
+      map(response => {
+        if (response && response.codigo === 200) {
+          console.log('Reserva creada con éxito:', response);
+          this.isLoggedInSubject.next(true); // Indica que el usuario está logueado
+          localStorage.getItem('id_reserva');
+          localStorage.getItem('id_huesped');
         }
         return response;
       }),
