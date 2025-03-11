@@ -1,5 +1,5 @@
 footer {
-    background-color: #333; /* Fondo oscuro */
+    background-color: #0612b9; /* Fondo oscuro */
     color: #fff; /* Texto blanco */
     padding: 20px;
     text-align: center; /* Centrar el texto */
@@ -16,7 +16,7 @@ footer .redes-sociales {
 }
 
 footer .redes-sociales a {
-    color: #1e90ff; /* Color de los enlaces (azul brillante) */
+    color: #ffffff; /* Color de los enlaces (azul brillante) */
     text-decoration: none; /* Sin subrayado */
     margin: 0 10px; /* Espaciado horizontal entre enlaces */
     font-weight: bold; /* Texto en negrita */

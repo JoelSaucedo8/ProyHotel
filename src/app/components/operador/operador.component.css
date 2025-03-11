@@ -1,0 +1,100 @@
+/* Estilos para Panel Operador */
+body {
+    font-family: 'Lexend', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.operador-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.section h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+input[type="text"], input[type="email"], input[type="date"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"] {
+    background-color: #28a745;
+}
+
+button[type="button"]:hover {
+    background-color: #218838;
+}
+
+button.cancel {
+    background-color: #ff4d4d;
+}
+
+button.cancel:hover {
+    background-color: #e43d3d;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+    color: #444;
+}
+
+/* Hacer que el contenedor tenga scroll si es muy largo */
+.operador-container {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Espaciado para los botones */
+button + button {
+    margin-left: 10px;
+}
